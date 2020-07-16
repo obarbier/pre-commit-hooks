@@ -10,6 +10,11 @@
     description: Prevent giant files from being committed
     entry: check-added-large-files
     language: python
+-   id: branch-name-convention
+    name: Check for branch name
+    description: prevent branch name with unkwown format to be commited
+    entry: branch-name-convention
+    language: python    
 -   id: check-ast
     name: Check python ast
     description: Simply check whether the files parse as valid python.
