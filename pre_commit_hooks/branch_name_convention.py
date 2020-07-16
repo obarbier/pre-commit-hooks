@@ -33,6 +33,7 @@ def main(argv: Sequence[str] = None) -> int:
             'may be specified multiple times'
         ),
     )
+    parser.add_argument('filenames', nargs='*')
     args = parser.parse_args(argv)
     patterns = frozenset(args.pattern or ())
     return int(is_on_branch(patterns))
