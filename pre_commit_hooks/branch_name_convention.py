@@ -17,11 +17,11 @@ def is_on_branch(
         # git branch --show-current
         branch_name = cmd_output('git', 'branch', '--show-current')
     except CalledProcessError:  # pragma: no cover (with git-lfs)
-        return False
+        return True
     for p in patterns:
         if re.match(p, branch_name) is not None:
-            return True
-    return False
+            return False
+    return True
 
 
 def main(argv: Sequence[str] = None) -> int:
