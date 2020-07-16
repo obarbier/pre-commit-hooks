@@ -18,9 +18,15 @@ def current_branch_name() -> Set[str]:
     return branch
 
 
-def main(argv: Optional[str] = None) -> int:
+def main(argv: Optional[Sequence[str]] = None) -> int:
     parser = argparse.ArgumentParser()
-    parser.add_argument('pattern', help='Pattern to check')
+    parser.add_argument(
+        '-p', '--pattern', action='append',
+        help=(
+            'regex pattern for branch name to disallow commits to, '
+            'may be specified multiple times'
+        ),
+    )
     args = parser.parse_args(argv)
     cBranch = current_branch_name()
     if re.match(args.pattern, cBranch) is not None:
